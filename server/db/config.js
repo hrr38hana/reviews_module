@@ -58,7 +58,8 @@ module.exports = (db) => {
         };
       }
       for (var i = 1; i < 101; i++) {
-        for (var j = 0; j < 5; j++) {
+        let revNum = randomNumber(0, 10);
+        for (var j = 0; j < revNum; j++) {
           //add a review for product i
           let stars = randomNumber(1, 5);
           let body = dummyText;

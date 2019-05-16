@@ -5,7 +5,7 @@ const database = 'TREK';
 
 const connection = mysql.createConnection({
   user: 'root',
-  password: ''
+  password: '',
 });
 
 const db = Promise.promisifyAll(connection, { multiArgs: true });
