@@ -1,11 +1,8 @@
 {
   "name": "reviews_module",
-  "version": "",
-  "description": "",
+  "description": "Reviews Module for TREK bikes Clone",
   "main": "index.js",
-  "author": "",
-  "version": "1.0.0"
-  "description": "...something descriptive about the reviews app",
+  "version": "1.0.0",
   "author": "Hayden Bass",
   "license": "UNLICENSED",
   "engines": {
