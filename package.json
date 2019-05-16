@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "author": "",
-  "license": "",
+  "version": "1.0.0"
+  "description": "...something descriptive about the reviews app",
+  "author": "Hayden Bass",
+  "license": "UNLICENSED",
   "engines": {
     "node": ">=6.13.0"
   },
