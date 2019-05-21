@@ -8,15 +8,24 @@ import Cons from './Cons.jsx'
 const ChartsWrapper = styled.div`
 display:flex;
 flex-grow: 1;
-justify-content: center;
+justify-content: space-around;
 `
 
 const ReviewsCharts = props => {
+let recommended = 0;
+let total = 0;
+  if(props) {
+  for (var i in props.reviews) {
+    recommended += props.reviews[i].recommended;
+    total++
+  }
+}
+let recommendedPercent = Math.ceil((recommended/total) *100)
   return (
     <div>
 
 
-        <StarRating rating={props.rating}/><br/>
+        <StarRating total={props.reviews.length} rating={props.rating} recommended={recommendedPercent}/><br/>
       <ChartsWrapper>
         <BarGraph reviews={props.reviews} />
         <Pros reviews={props.reviews}/>

@@ -5,9 +5,11 @@ import styled from 'styled-components';
 import ReviewsCharts from './components/ReviewsCharts.jsx'
 
 const BigWrapper = styled.div`
-border-style:solid;
-display:flex;
-justify-self:center;
+position:relative;
+max-width:1200px;
+min-width: 970px;
+left:50%;
+transform: translate(-50%)
 `
 
 class App extends React.Component {
@@ -39,7 +41,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <BigWrapper>
+
       <ReviewsCharts reviews={this.state.reviews} rating={this.state.rating}/>
+        </BigWrapper>
       </div>
     )
   }

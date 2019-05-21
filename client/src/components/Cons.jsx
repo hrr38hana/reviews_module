@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import Con from './Con.jsx'
 
 const Chart = styled.div`
+flex-grow: 1;
 height:250px;
-width:30%;
-max-width: 350px;
 margin: 5px;
 border-style: solid;
 border-width: 1px;

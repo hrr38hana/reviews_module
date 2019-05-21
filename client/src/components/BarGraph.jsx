@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 const Graph = styled.div`
 height:250px;
-width:30%;
-max-width: 350px;
+flex-grow: 1;
+min-width:33%;
 margin: 5px;
 border-style: solid;
 border-width: 1px;

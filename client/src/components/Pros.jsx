@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import Pro from './Pro.jsx'
 
 const Chart = styled.div`
+flex-grow: 1;
 height:250px;
-width:30%;
-max-width: 350px;
+min-width:33%;
 margin: 5px;
 border-style: solid;
 border-width: 1px;
@@ -25,10 +25,11 @@ align-items: center;
 margin-bottom: 15px;
 `
 
+
 const Pros = props => {
   // console.log(props.reviews)
   let prosObj = {}
-  if(props.reviews.length) {
+  if (props.reviews.length) {
     for (var i in props.reviews) {
       if (!prosObj[props.reviews[i].pros]) {
         prosObj[props.reviews[i].pros] = 1;
@@ -40,13 +41,13 @@ const Pros = props => {
       <Chart>
         <Header>Pros</Header>
         {Object.entries(prosObj).map((el, i) => {
-          return el[0] === '' ? null : <Pro entry={el} key={i}/>
+          return el[0] === '' ? null : <Pro entry={el} key={i} />
         })}
       </Chart>
     )
   }
   else return (
-    <Chart/>
+    <Chart />
   )
 }
 

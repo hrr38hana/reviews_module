@@ -52,7 +52,7 @@ module.exports = (db) => {
         let num = randomNumber(0,1);
         if (num === 1) {
           let text = dummyText.slice(randomNumber(5, 20), randomNumber(20, 150));
-          return text.length < 48 ? text : text.slice(0, 48);
+          return text.length < 38 ? text : text.slice(0, 38);
         } 
         if (num === 0) {
           return '';
