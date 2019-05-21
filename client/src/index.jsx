@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import styled from 'styled-components';
-import StarRatings from 'react-star-ratings';
+import StarRating from './StarRating.jsx'
+import BarGraph from './BarGraph.jsx'
 
 
 
@@ -10,17 +11,18 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: 1,
+      product: Math.floor(Math.random() *100),
       reviews: [],
       rating: 0
     }
   }
-  componentDidMount() {
-    $.get('/reviews/10')
-      .done(results => {
-        this.setState({ reviews: results });
-        this.getAverage()
-      })
+  async componentDidMount() {
+    await $.get(`/reviews/${this.state.product}`)
+    .done(results => {
+      this.setState({ reviews: results });
+      console.log(this.state)
+      this.getAverage()
+    })
   }
   getAverage() {
     let total = 0, average;
@@ -30,18 +32,14 @@ class App extends React.Component {
     average = total / this.state.reviews.length;
     this.setState({ rating: average })
   }
+
   render() {
     return (
       <div>
-        <StarRatings
-          rating={this.state.rating}
-          starRatedColor="green"
-          changeRating={this.changeRating}
-          numberOfStars={5}
-          name='rating'
-        />
 
-        <h1>rendering</h1>
+      <h1>rendering</h1>
+      <StarRating rating={this.state.rating}/>
+      <BarGraph reviews={this.state.reviews}/>
       </div>
 
     )
