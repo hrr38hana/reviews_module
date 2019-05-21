@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import styled from 'styled-components';
-import StarRating from './StarRating.jsx'
-import BarGraph from './BarGraph.jsx'
+import StarRating from './components/StarRating.jsx'
+import BarGraph from './components/BarGraph.jsx'
+import ReviewsCharts from './components/ReviewsCharts.jsx'
 
 
 
@@ -36,10 +37,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-
-      <h1>rendering</h1>
       <StarRating rating={this.state.rating}/>
-      <BarGraph reviews={this.state.reviews}/>
+      <ReviewsCharts reviews={this.state.reviews}/>
       </div>
 
     )
