@@ -51,7 +51,8 @@ module.exports = (db) => {
       const optData = () => {
         let num = randomNumber(0,1);
         if (num === 1) {
-          return 'Lorem ipsum dolor sit amet';
+          let text = dummyText.slice(randomNumber(5, 20), randomNumber(20, 150));
+          return text.length < 48 ? text : text.slice(0, 48);
         } 
         if (num === 0) {
           return '';

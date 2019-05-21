@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import styled from 'styled-components';
-import StarRating from './components/StarRating.jsx'
-import BarGraph from './components/BarGraph.jsx'
 import ReviewsCharts from './components/ReviewsCharts.jsx'
 
-
+const BigWrapper = styled.div`
+border-style:solid;
+display:flex;
+justify-self:center;
+`
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +19,7 @@ class App extends React.Component {
       rating: 0
     }
   }
-  async componentDidMount() {
+  async componentWillMount() {
     await $.get(`/reviews/${this.state.product}`)
     .done(results => {
       this.setState({ reviews: results });
@@ -37,10 +39,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-      <StarRating rating={this.state.rating}/>
-      <ReviewsCharts reviews={this.state.reviews}/>
+      <ReviewsCharts reviews={this.state.reviews} rating={this.state.rating}/>
       </div>
-
     )
   }
 }
