@@ -12,7 +12,10 @@ max-width:1050px;
 min-width: 970px;
 left:50%;
 transform: translate(-50%)
-`
+`;
+const ReviewWrapper = styled.div`
+visibility:hidden;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -23,6 +26,7 @@ class App extends React.Component {
       rating: 0
     }
     this.addReview = this.addReview.bind(this);
+    this.toggleReviewWindow = this.toggleReviewWindow.bind(this);
   }
   componentDidMount() {
     console.log(this.state);
@@ -52,14 +56,19 @@ class App extends React.Component {
         alert('Review NOT Posted! : ', err);
       });
   }
+  toggleReviewWindow() {
+    $('#ReviewForm').css('visibility', 'visible');
+  }
 
   render() {
     return (
       <div>
         <BigWrapper>
 
-          <ReviewsCharts reviews={this.state.reviews} rating={this.state.rating} />
-          <ReviewForm product_Id={this.state.product} post={this.addReview} />
+          <ReviewsCharts reviews={this.state.reviews} rating={this.state.rating} toggle={this.toggle} />
+          <ReviewWrapper>
+            <ReviewForm id="ReviewForm" product_Id={this.state.product} post={this.addReview} />
+          </ReviewWrapper>
         </BigWrapper>
       </div>
     )

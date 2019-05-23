@@ -25,7 +25,7 @@ let recommendedPercent = Math.ceil((recommended/total) *100)
     <div>
 
 
-        <StarRating total={props.reviews.length} rating={props.rating} recommended={recommendedPercent}/><br/>
+        <StarRating total={props.reviews.length} rating={props.rating} recommended={recommendedPercent} toggle={props.toggle}/><br/>
       <ChartsWrapper>
         <BarGraph reviews={props.reviews} />
         <Pros reviews={props.reviews}/>

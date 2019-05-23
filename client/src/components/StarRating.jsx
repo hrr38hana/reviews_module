@@ -51,6 +51,9 @@ order:2;
 align-self: flex-end;
 font-family: Helvetica, Arial, sans-serif;
 `
+const AddReview = styled.p`
+font-weight:500;
+`
 const StarRating = (props) => {
 
 
@@ -68,6 +71,7 @@ const StarRating = (props) => {
           />
           <Average>{props.rating.toFixed(1)}</Average>
           <ReviewsTotal>{props.total} Reviews</ReviewsTotal>
+        <AddReview onClick={()=> props.toggle}>Add Review</AddReview>
           <PercentRecommend>{props.recommended}%</PercentRecommend>
           <RecommendStatement>of respondents would recommend this to a friend</RecommendStatement>
           </Wrapper>
