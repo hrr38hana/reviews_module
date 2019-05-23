@@ -10,6 +10,9 @@ app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }))
 let port = process.env.PORT || 1128;
 
+app.get('/', (req, res) => {
+  res.send(200);
+})
 
 app.get('/reviews/:id', (req, res) => {
   console.log(req.params.id)

@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import Pro from './Pro.jsx'
 
 const Chart = styled.div`
+display:flex;
 flex-grow: 1;
+flex-direction: column;
+justify-content: space-between;
 height:250px;
 min-width:33%;
 margin: 5px;
@@ -14,6 +17,7 @@ font-family: Helvetica, Arial, sans-serif;
 `;
 const Header = styled.div`
 display:flex;
+float: top;
 padding-left: 10px;
 background-color: #F6F5F6;
 width:auto;

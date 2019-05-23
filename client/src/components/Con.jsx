@@ -9,7 +9,7 @@ font-size: 14px;
 color:#666;
 `;
 const ConEntryTotal = styled.div`
-width:15px;
+width:10px;
 height:15px;
 color: #666;
     font-weight: 700;

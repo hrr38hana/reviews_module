@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import styled from 'styled-components';
 import ReviewsCharts from './components/ReviewsCharts.jsx'
+import ReviewForm from './components/AddReviewForm.jsx';
+
 
 const BigWrapper = styled.div`
 position:relative;
-max-width:1200px;
+max-width:1050px;
 min-width: 970px;
 left:50%;
 transform: translate(-50%)
@@ -14,12 +16,15 @@ transform: translate(-50%)
 
 class App extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       product: Math.floor(Math.random() *100),
       reviews: [],
       rating: 0
     }
+  }
+  componentDidMount() {
+    console.log(this.state);
   }
   async componentWillMount() {
     await $.get(`/reviews/${this.state.product}`)
@@ -44,6 +49,7 @@ class App extends React.Component {
         <BigWrapper>
 
       <ReviewsCharts reviews={this.state.reviews} rating={this.state.rating}/>
+      <ReviewForm product_Id={this.state.product}/>
         </BigWrapper>
       </div>
     )
