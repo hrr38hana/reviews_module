@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Rating from './RatingInput.jsx'
 
 const TitleInput = styled.input`
 
@@ -62,6 +63,7 @@ class ReviewForm extends React.Component {
     return (
       <div>
         <h1>ReviewForm Mounted</h1>
+        <Rating/>
         <TitleInput placeholder="title" name='title' onChange={this.handleChange} />
         <Body placeholder='body' name='body' onChange={this.handleChange} />
         <WouldRecommend type='radio' value='1' name='recommend' onChange={this.handleChange} />

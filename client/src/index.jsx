@@ -52,6 +52,12 @@ class App extends React.Component {
     this.setState({ rating: average })
   }
   addReview(data) {
+    for(var i in data) {
+      if (i !== 'pros' && i !== 'cons' && i!== 'describe_yourself' && i !== 'best_uses' && data[i] === null) {
+        alert(`${i} Cannot Be Left Blank`);
+        return;
+      }
+    }
     $.post(`/reviews/${data.product_Id}`, data)
       .done((response) => {
         alert(response);
