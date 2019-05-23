@@ -25,7 +25,7 @@ margin-bottom: 15px;
 `
 
 const Cons = props => {
-  // console.log(props.reviews)
+  
   let consObj = {}
   if(props.reviews.length) {
     for (var i in props.reviews) {
@@ -34,7 +34,7 @@ const Cons = props => {
       }
       else consObj[props.reviews[i].cons]++;
     }
-    console.log(Object.entries(consObj))
+    
     return (
       <Chart>
         <Header>Cons</Header>

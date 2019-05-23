@@ -46,6 +46,7 @@ class ReviewForm extends React.Component {
       cons: null,
       describe_yourself: null,
       best_uses: null,
+      
     }
     this.handleChange = this.handleChange.bind(this)
   }

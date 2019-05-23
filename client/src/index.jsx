@@ -14,7 +14,10 @@ left:50%;
 transform: translate(-50%)
 `;
 const ReviewWrapper = styled.div`
-visibility:hidden;
+// visibility:hidden;
+//   &:active{
+//     visibility:visible;
+  }
 `;
 
 class App extends React.Component {
@@ -23,7 +26,8 @@ class App extends React.Component {
     this.state = {
       product: Math.floor(Math.random() * 100),
       reviews: [],
-      rating: 0
+      rating: 0,
+      isHidden: true
     }
     this.addReview = this.addReview.bind(this);
     this.toggleReviewWindow = this.toggleReviewWindow.bind(this);
@@ -35,7 +39,7 @@ class App extends React.Component {
     await $.get(`/reviews/${this.state.product}`)
       .done(results => {
         this.setState({ reviews: results });
-        console.log(this.state)
+        
         this.getAverage()
       })
   }
@@ -57,18 +61,17 @@ class App extends React.Component {
       });
   }
   toggleReviewWindow() {
-    $('#ReviewForm').css('visibility', 'visible');
+    this.setState({ isHidden: !this.state.isHidden })
   }
 
   render() {
     return (
       <div>
         <BigWrapper>
-
-          <ReviewsCharts reviews={this.state.reviews} rating={this.state.rating} toggle={this.toggle} />
-          <ReviewWrapper>
-            <ReviewForm id="ReviewForm" product_Id={this.state.product} post={this.addReview} />
-          </ReviewWrapper>
+          <ReviewsCharts reviews={this.state.reviews} rating={this.state.rating} toggle={this.toggleReviewWindow} />
+          {!this.state.isHidden ? <ReviewWrapper ref="ReviewForm">
+            <ReviewForm product_Id={this.state.product} post={this.addReview} />
+          </ReviewWrapper> : null}
         </BigWrapper>
       </div>
     )

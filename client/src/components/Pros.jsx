@@ -31,7 +31,7 @@ margin-bottom: 15px;
 
 
 const Pros = props => {
-  // console.log(props.reviews)
+  
   let prosObj = {}
   if (props.reviews.length) {
     for (var i in props.reviews) {
@@ -40,7 +40,7 @@ const Pros = props => {
       }
       else prosObj[props.reviews[i].pros]++;
     }
-    console.log(Object.entries(prosObj))
+    
     return (
       <Chart>
         <Header>Pros</Header>

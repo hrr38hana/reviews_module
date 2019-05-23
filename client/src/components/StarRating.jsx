@@ -68,14 +68,14 @@ const StarRating = (props) => {
           numberOfStars={5}
           starSpacing='0px'
           name='rating'
-          />
-          <Average>{props.rating.toFixed(1)}</Average>
-          <ReviewsTotal>{props.total} Reviews</ReviewsTotal>
-        <AddReview onClick={()=> props.toggle}>Add Review</AddReview>
-          <PercentRecommend>{props.recommended}%</PercentRecommend>
-          <RecommendStatement>of respondents would recommend this to a friend</RecommendStatement>
-          </Wrapper>
-      </div>
+        />
+        <Average>{props.rating.toFixed(1)}</Average>
+        <ReviewsTotal>{props.total} Reviews</ReviewsTotal>
+        <AddReview onClick={props.toggle}>Add Review</AddReview>
+        <PercentRecommend>{props.recommended}%</PercentRecommend>
+        <RecommendStatement>of respondents would recommend this to a friend</RecommendStatement>
+      </Wrapper>
+    </div>
   )
 }
 
