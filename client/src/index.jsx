@@ -18,21 +18,22 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      product: Math.floor(Math.random() *100),
+      product: Math.floor(Math.random() * 100),
       reviews: [],
       rating: 0
     }
+    this.addReview = this.addReview.bind(this);
   }
   componentDidMount() {
     console.log(this.state);
   }
   async componentWillMount() {
     await $.get(`/reviews/${this.state.product}`)
-    .done(results => {
-      this.setState({ reviews: results });
-      console.log(this.state)
-      this.getAverage()
-    })
+      .done(results => {
+        this.setState({ reviews: results });
+        console.log(this.state)
+        this.getAverage()
+      })
   }
   getAverage() {
     let total = 0, average;
@@ -42,14 +43,23 @@ class App extends React.Component {
     average = total / this.state.reviews.length;
     this.setState({ rating: average })
   }
+  addReview(data) {
+    $.post(`/reviews/${data.product_Id}`, data)
+      .done((response) => {
+        alert(response);
+      })
+      .catch((err) => {
+        alert('Review NOT Posted! : ', err);
+      });
+  }
 
   render() {
     return (
       <div>
         <BigWrapper>
 
-      <ReviewsCharts reviews={this.state.reviews} rating={this.state.rating}/>
-      <ReviewForm product_Id={this.state.product}/>
+          <ReviewsCharts reviews={this.state.reviews} rating={this.state.rating} />
+          <ReviewForm product_Id={this.state.product} post={this.addReview} />
         </BigWrapper>
       </div>
     )

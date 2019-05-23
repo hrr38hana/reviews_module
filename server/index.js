@@ -15,10 +15,14 @@ app.get('/', (req, res) => {
 })
 
 app.get('/reviews/:id', (req, res) => {
-  console.log(req.params.id)
   models.reviews.get(req.params.id, response => {
     res.status(200).send(response)
   })
+});
+
+app.post('/reviews/:id', (req, res) => {
+  console.log(req.body, 'post method id');
+  res.send(201);
 })
 
 

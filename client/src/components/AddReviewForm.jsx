@@ -73,7 +73,7 @@ class ReviewForm extends React.Component {
         <Cons placeholder='Cons' name='cons' onChange={this.handleChange} />
         <DescribeYourself placeholder='Describe Yourself' name='describe_yourself' onChange={this.handleChange} />
         <BestUses placeholder='Best Uses' name='best_uses' onChange={this.handleChange} />
-        <SubmitButton type='submit' onClick={() => console.log(this.state)}>Submit</SubmitButton>
+        <SubmitButton type='submit' onClick={() => this.props.post(this.state)}>Submit</SubmitButton>
       </div>
     )
   }
