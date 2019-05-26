@@ -28,6 +28,7 @@ module.exports = (db) => {
         describe_yourself VARCHAR(48) NULL,
         best_uses VARCHAR(48) NULL,
         nickname VARCHAR(48) NOT NULL,
+        created INT(3) NOT NULL,
         product_ID INTEGER NOT NULL,
         PRIMARY KEY(id)
         );`);
@@ -68,7 +69,7 @@ module.exports = (db) => {
           let stars = randomNumber(1, 5);
           let body = dummyText.slice(0, randomNumber(10,dummyText.length));
           let title = 'Lorem ipsum dolor';
-          let recommended = randomNumber(0,1);
+          let recommended = stars > 3 ? 1 : 0;
           let location = "Somewhere, USA";
           let gift = randomNumber(0,1);
           let email = 'apersonsemail@gmail.com';
@@ -77,9 +78,10 @@ module.exports = (db) => {
           let describe_yourself = optData();
           let best_uses = optData();
           let nickname = dummyNames[(randomNumber(0, dummyNames.length-1))];
+          let created = randomNumber(1, 30);
           db.queryAsync(`
-          INSERT IGNORE INTO reviews (stars, body, title, recommended, location, gift, email, pros, cons, describe_yourself, best_uses, nickname, product_ID)
-          VALUES ('${stars}', '${body}', '${title}', '${recommended}', '${location}', '${gift}', '${email}', '${pros}', '${cons}', '${describe_yourself}', '${best_uses}', '${nickname}', '${i}');
+          INSERT IGNORE INTO reviews (stars, body, title, recommended, location, gift, email, pros, cons, describe_yourself, best_uses, nickname, created, product_ID)
+          VALUES ('${stars}', '${body}', '${title}', '${recommended}', '${location}', '${gift}', '${email}', '${pros}', '${cons}', '${describe_yourself}', '${best_uses}', '${nickname}', '${created}', '${i}');
           `)
         }
       }

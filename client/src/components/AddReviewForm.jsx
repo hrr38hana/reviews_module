@@ -53,6 +53,7 @@ padding: 12px 15px;
     font-weight: 700;
     border: none;
     border-bottom: 2px solid #085c91;
+    margin-top: 15px;
 }
 
 

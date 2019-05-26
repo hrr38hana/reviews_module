@@ -14,17 +14,46 @@ font-size: 18px;
 padding:5px;
 font-family: Helvetica;
 margin-bottom: 10px;
+margin-top: 15px;
 `;
 
-
-const ReviewsDetails = props => {
-    return props.reviews.length !== 0 ? (
+class ReviewsDetails extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      reviews: props.reviews,
+      isFiltered: props.isFiltered,
+      filteredReviews: props.reviews,
+      filteredBy: this.props.filteredBy
+    }
+  }
+  componentDidMount() {
+    console.log(this.state)
+  }
+  componentDidUpdate() {
+    if (this.state.filteredBy !== this.props.filteredBy) {
+      this.filterReviews();
+    }
+  }
+  filterReviews() {
+    let revArray = [];
+    this.state.reviews.map(el => {
+      if (el.stars === this.props.filteredBy) {
+        revArray.push(el);
+      }
+    })
+    this.setState({ filteredReviews: revArray, filteredBy: this.props.filteredBy })
+  }
+  render() {
+    return this.state.reviews.length !== 0 ? (
       <div>
-        <Header>Reviewd by {props.reviews.length} Customers </Header>
-        {props.reviews.map(el => {
-        return <IndividualReviewDetail review={el}/>})}
+        <Header>Reviewd by {this.props.reviews.length} Customers </Header>
+        {this.state.filteredReviews.map((el, i) => {
+          return <IndividualReviewDetail key={i} review={el} />
+        })}
       </div>
     ) : (<div></div>)
   }
+}
 
 export default ReviewsDetails;

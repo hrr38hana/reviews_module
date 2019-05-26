@@ -27,13 +27,13 @@ class App extends React.Component {
       product: Math.floor(Math.random() * 100),
       reviews: [],
       rating: 0,
-      isHidden: true
+      isHidden: true,
+      isFiltered:false,
+      filteredStar: null
     }
     this.addReview = this.addReview.bind(this);
     this.toggleReviewWindow = this.toggleReviewWindow.bind(this);
-  }
-  componentDidMount() {
-    console.log(this.state);
+    this.filterReviews = this.filterReviews.bind(this)
   }
   async componentWillMount() {
     await $.get(`/reviews/${this.state.product}`)
@@ -42,6 +42,10 @@ class App extends React.Component {
 
         this.getAverage()
       })
+  }
+  componentDidMount() {
+    console.log(this.state);
+
   }
   getAverage() {
     let total = 0, average;
@@ -60,7 +64,7 @@ class App extends React.Component {
     }
     $.post(`/reviews/${data.product_Id}`, data)
       .done((response) => {
-        this.setState({isHidden: true})
+        this.setState({ isHidden: true })
         alert(response);
       })
       .catch((err) => {
@@ -70,17 +74,21 @@ class App extends React.Component {
   toggleReviewWindow() {
     this.setState({ isHidden: !this.state.isHidden })
   }
+  filterReviews(star) {
+    console.log(star)
+    this.setState({isFiltered: true, filteredStar: star})
+  } 
 
   render() {
     return (
       <div>
-        <BigWrapper>
-          
-          <ReviewsCharts reviews={this.state.reviews} rating={this.state.rating} toggle={this.toggleReviewWindow} />
+        {this.state && this.state.reviews.length !== 0 ? <BigWrapper>
+          <p style={{ fontSize: 30, fontWeight: 800, fontFamily: 'Helvetica' }}>Reviews</p>
+          <ReviewsCharts filteredBy={this.state.filteredStar} isFiltered={this.state.isFiltered} barClick={this.filterReviews} reviews={this.state.reviews} rating={this.state.rating} toggle={this.toggleReviewWindow} />
           {!this.state.isHidden ? <ReviewWrapper ref="ReviewForm">
             <ReviewForm product_Id={this.state.product} post={this.addReview} />
           </ReviewWrapper> : null}
-        </BigWrapper>
+        </BigWrapper> : null}
       </div>
     )
   }

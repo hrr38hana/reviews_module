@@ -71,7 +71,7 @@ const StarRating = (props) => {
         />
         <Average>{props.rating.toFixed(1)}</Average>
         <ReviewsTotal>{props.total} Reviews</ReviewsTotal>
-        <AddReview onClick={props.toggle}>Add Review</AddReview>
+        <AddReview onClick={props.toggle}>Write a Review</AddReview>
         <PercentRecommend>{props.recommended}%</PercentRecommend>
         <RecommendStatement>of respondents would recommend this to a friend</RecommendStatement>
       </Wrapper>
