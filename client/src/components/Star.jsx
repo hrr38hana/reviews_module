@@ -17,7 +17,7 @@ margin:2px;
 const Star = (props) => {
   return (
     <div>
-      {props.value === 1 ? <StarSelected name={props.index} onClick={() => console.log(event.target.name)}>★</StarSelected> : <StarUnselected index={props.index} >★</StarUnselected>}
+      {props.value === 1 ? <StarSelected name={props.index} onClick={props.click}>★</StarSelected> : <StarUnselected index={props.index} onClick={props.click} >★</StarUnselected>}
     </div>
   )
 }

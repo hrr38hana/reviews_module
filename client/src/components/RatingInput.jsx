@@ -30,6 +30,7 @@ class Rating extends React.Component {
       }
     }
     this.setState({ stars: starSet })
+    console.log(this.state)
   }
   render() {
     return (<div>

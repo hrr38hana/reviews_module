@@ -66,7 +66,7 @@ module.exports = (db) => {
         for (var j = 0; j < revNum; j++) {
           //add a review for product i
           let stars = randomNumber(1, 5);
-          let body = dummyText;
+          let body = dummyText.slice(0, randomNumber(10,dummyText.length));
           let title = 'Lorem ipsum dolor';
           let recommended = randomNumber(0,1);
           let location = "Somewhere, USA";

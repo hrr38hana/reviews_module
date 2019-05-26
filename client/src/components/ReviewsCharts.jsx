@@ -3,7 +3,9 @@ import BarGraph from './BarGraph.jsx'
 import React from 'react';
 import StarRating from './StarRating.jsx'
 import Pros from './Pros.jsx'
-import Cons from './Cons.jsx'
+import Cons from './Cons.jsx';
+import ReviewsDetails from './ReviewsDetail.jsx'
+
 
 const ChartsWrapper = styled.div`
 display:flex;
@@ -31,6 +33,7 @@ let recommendedPercent = Math.ceil((recommended/total) *100)
         <Pros reviews={props.reviews}/>
         <Cons reviews={props.reviews}/>
       </ChartsWrapper>
+      <ReviewsDetails reviews={props.reviews}/>
 
     </div>
   )

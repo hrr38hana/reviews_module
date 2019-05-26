@@ -27,7 +27,7 @@ class App extends React.Component {
       product: Math.floor(Math.random() * 100),
       reviews: [],
       rating: 0,
-      isHidden: false
+      isHidden: true
     }
     this.addReview = this.addReview.bind(this);
     this.toggleReviewWindow = this.toggleReviewWindow.bind(this);
@@ -60,6 +60,7 @@ class App extends React.Component {
     }
     $.post(`/reviews/${data.product_Id}`, data)
       .done((response) => {
+        this.setState({isHidden: true})
         alert(response);
       })
       .catch((err) => {
@@ -74,6 +75,7 @@ class App extends React.Component {
     return (
       <div>
         <BigWrapper>
+          
           <ReviewsCharts reviews={this.state.reviews} rating={this.state.rating} toggle={this.toggleReviewWindow} />
           {!this.state.isHidden ? <ReviewWrapper ref="ReviewForm">
             <ReviewForm product_Id={this.state.product} post={this.addReview} />
