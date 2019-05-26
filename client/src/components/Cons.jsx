@@ -3,8 +3,13 @@ import styled from 'styled-components';
 import Con from './Con.jsx'
 
 const Chart = styled.div`
+display:flex;
 flex-grow: 1;
+flex-direction: column;
+
+align-content: center;
 height:250px;
+min-width:33%;
 margin: 5px;
 border-style: solid;
 border-width: 1px;

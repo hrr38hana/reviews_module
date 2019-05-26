@@ -27,7 +27,7 @@ class App extends React.Component {
       product: Math.floor(Math.random() * 100),
       reviews: [],
       rating: 0,
-      isHidden: true
+      isHidden: false
     }
     this.addReview = this.addReview.bind(this);
     this.toggleReviewWindow = this.toggleReviewWindow.bind(this);
@@ -39,7 +39,7 @@ class App extends React.Component {
     await $.get(`/reviews/${this.state.product}`)
       .done(results => {
         this.setState({ reviews: results });
-        
+
         this.getAverage()
       })
   }
@@ -52,8 +52,8 @@ class App extends React.Component {
     this.setState({ rating: average })
   }
   addReview(data) {
-    for(var i in data) {
-      if (i !== 'pros' && i !== 'cons' && i!== 'describe_yourself' && i !== 'best_uses' && data[i] === null) {
+    for (var i in data) {
+      if (i !== 'pros' && i !== 'cons' && i !== 'describe_yourself' && i !== 'best_uses' && data[i] === null) {
         alert(`${i} Cannot Be Left Blank`);
         return;
       }
