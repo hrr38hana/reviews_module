@@ -69,7 +69,7 @@ module.exports = (db) => {
           let stars = randomNumber(1, 5);
           let body = dummyText.slice(0, randomNumber(10,dummyText.length));
           let title = 'Lorem ipsum dolor';
-          let recommended = stars > 3 ? 1 : 0;
+          let recommended = stars > 2 ? 1 : 0;
           let location = "Somewhere, USA";
           let gift = randomNumber(0,1);
           let email = 'apersonsemail@gmail.com';

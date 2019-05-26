@@ -76,7 +76,13 @@ class App extends React.Component {
   }
   filterReviews(star) {
     console.log(star)
-    this.setState({isFiltered: true, filteredStar: star})
+    if(this.state.isFiltered === true && this.state.filteredStar === star) {
+      console.log('reset')
+      this.setState({isFiltered: false, filteredStar: null})
+    }
+    else {
+      this.setState({isFiltered: true, filteredStar: star})
+    }
   } 
 
   render() {
