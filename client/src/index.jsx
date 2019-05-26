@@ -64,6 +64,7 @@ class App extends React.Component {
     }
     $.post(`/reviews/${data.product_Id}`, data)
       .done((response) => {
+        this.state.reviews.push(data)
         this.setState({ isHidden: true })
         alert(response);
       })

@@ -85,6 +85,8 @@ class ReviewForm extends React.Component {
       cons: null,
       describe_yourself: null,
       best_uses: null,
+      stars: 3,
+      nickname: null,
       
     }
     this.handleChange = this.handleChange.bind(this)
@@ -119,7 +121,7 @@ class ReviewForm extends React.Component {
         <WouldRecommend type='radio' value='1' name='recommend' onChange={this.handleChange} />
         <WouldNotRecommend type='radio' value='0' name='recommend' onChange={this.handleChange} />
         <ReviewLabel>Nickname*</ReviewLabel>
-        <Nickname placeholder='Ex: Sarah'/>
+        <Nickname placeholder='Ex: Sarah' name='nickname' onChange={this.handleChange}/>
         <ReviewLabel>Your Location*</ReviewLabel>
         <Location placeholder="Ex: San Jose, CA" name='location' onChange={this.handleChange} />
         <ReviewLabel>Was This a Gift?</ReviewLabel>
