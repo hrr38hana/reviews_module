@@ -21,11 +21,10 @@ app.get('/reviews/:id', (req, res) => {
 });
 
 app.post('/reviews/:id', (req, res) => {
-  console.log(req.body, 'post method id');
   models.reviews.post(req.body, response => {
-  console.log(response)
+    console.log(response)
+    res.status(201).send(response);
   })
-  res.send(201);
 })
 
 

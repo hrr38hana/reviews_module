@@ -53,6 +53,10 @@ font-family: Helvetica, Arial, sans-serif;
 `
 const AddReview = styled.p`
 font-weight:500;
+color: #0b7bc1;
+&:hover {
+  text-decoration:underline;
+}
 `
 const StarRating = (props) => {
 

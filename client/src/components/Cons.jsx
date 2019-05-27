@@ -6,7 +6,6 @@ const Chart = styled.div`
 display:flex;
 flex-grow: 1;
 flex-direction: column;
-
 align-content: center;
 height:250px;
 min-width:33%;

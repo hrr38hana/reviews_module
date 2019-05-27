@@ -36,8 +36,8 @@ class ReviewsDetails extends React.Component {
     }
   }
   filterReviews() {
-    if(this.props.filteredBy === null) {
-      this.setState({ filteredReviews: this.state.reviews, filteredBy: this.props.filteredBy })
+    if (this.props.filteredBy === null) {
+      this.setState({ filteredReviews: this.props.reviews, filteredBy: this.props.filteredBy })
     }
     else {
       let revArray = [];
@@ -46,7 +46,7 @@ class ReviewsDetails extends React.Component {
           revArray.push(el);
         }
       })
-      if(revArray.length) {
+      if (revArray.length) {
         revArray = revArray.sort((a, b) => a.created - b.created)
         this.setState({ filteredReviews: revArray, filteredBy: this.props.filteredBy })
       }

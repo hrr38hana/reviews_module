@@ -17,7 +17,6 @@ font-family: Helvetica, Arial, sans-serif;
 `;
 const Header = styled.div`
 display:flex;
-float: top;
 padding-left: 10px;
 background-color: #F6F5F6;
 width:auto;

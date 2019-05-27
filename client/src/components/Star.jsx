@@ -6,12 +6,18 @@ height:10px;
 width:10px;
 color:red;
 margin:2px;
+font-size:20px;
+margin:5px;
+
 `;
 const StarUnselected = styled.div`
 height:10px;
 width:10px;
 color:black;
 margin:2px;
+font-size:20px;
+margin:5px;
+
 `
 
 const Star = (props) => {

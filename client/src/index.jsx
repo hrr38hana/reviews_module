@@ -14,7 +14,7 @@ left:50%;
 transform: translate(-50%)
 `;
 const ReviewWrapper = styled.div`
-// visibility:hidden;
+// visibility:visible;
 //   &:active{
 //     visibility:visible;
   }
@@ -28,7 +28,7 @@ class App extends React.Component {
       reviews: [],
       rating: 0,
       isHidden: true,
-      isFiltered:false,
+      isFiltered: false,
       filteredStar: null
     }
     this.addReview = this.addReview.bind(this);
@@ -43,6 +43,7 @@ class App extends React.Component {
         this.getAverage()
       })
   }
+
   componentDidMount() {
     console.log(this.state);
 
@@ -63,10 +64,9 @@ class App extends React.Component {
       }
     }
     $.post(`/reviews/${data.product_Id}`, data)
-      .done((response) => {
-        this.state.reviews.push(data)
-        this.setState({ isHidden: true })
-        alert(response);
+      .done((results) => {
+        this.setState({reviews: results, product: data.product_Id, isHidden: true })
+        alert('Review Posted');
       })
       .catch((err) => {
         alert('Review NOT Posted! : ', err);
@@ -74,17 +74,17 @@ class App extends React.Component {
   }
   toggleReviewWindow() {
     this.setState({ isHidden: !this.state.isHidden })
+
   }
   filterReviews(star) {
     console.log(star)
-    if(this.state.isFiltered === true && this.state.filteredStar === star) {
-      console.log('reset')
-      this.setState({isFiltered: false, filteredStar: null})
+    if (this.state.isFiltered === true && this.state.filteredStar === star) {
+      this.setState({ isFiltered: false, filteredStar: null })
     }
     else {
-      this.setState({isFiltered: true, filteredStar: star})
+      this.setState({ isFiltered: true, filteredStar: star })
     }
-  } 
+  }
 
   render() {
     return (
