@@ -13,12 +13,6 @@ min-width: 970px;
 left:50%;
 transform: translate(-50%)
 `;
-const ReviewWrapper = styled.div`
-// visibility:visible;
-//   &:active{
-//     visibility:visible;
-  }
-`;
 
 class App extends React.Component {
   constructor(props) {
@@ -65,7 +59,7 @@ class App extends React.Component {
     }
     $.post(`/reviews/${data.product_Id}`, data)
       .done((results) => {
-        this.setState({reviews: results, product: data.product_Id, isHidden: true })
+        this.setState({ reviews: results, product: data.product_Id, isHidden: true })
         alert('Review Posted');
       })
       .catch((err) => {
