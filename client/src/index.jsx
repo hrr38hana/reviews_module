@@ -13,6 +13,12 @@ min-width: 970px;
 left:50%;
 transform: translate(-50%)
 `;
+const ReviewWrapper = styled.div`
+// visibility:visible;
+//   &:active{
+//     visibility:visible;
+  }
+`;
 
 class App extends React.Component {
   constructor(props) {
