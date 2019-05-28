@@ -24,6 +24,12 @@ font-side: 16px;
 align-items: center;
 margin-bottom: 15px;
 `
+// const Modal = styled.div`
+// z-index:4;
+// width:300px;
+// height:25px;
+// border-style:solid;
+// `;
 
 const BarGraph = props => {
   let stars = {
@@ -42,11 +48,12 @@ const BarGraph = props => {
     return (
       <Graph>
         <Header>Ratings Distribution</Header>
-        <Bar width={(stars[5] / total) * 100} revs={stars[5]} value={5}></Bar>
-        <Bar width={(stars[4] / total) * 100} revs={stars[4]} value={4}></Bar>
-        <Bar width={(stars[3] / total) * 100} revs={stars[3]} value={3}></Bar>
-        <Bar width={(stars[2] / total) * 100} revs={stars[2]} value={2}></Bar>
-        <Bar width={(stars[1] / total) * 100} revs={stars[1]} value={1}></Bar>
+        {/* <Modal/> */}
+        <Bar width={(stars[5] / total) * 100} barClick={props.barClick} revs={stars[5]} value={5}></Bar>
+        <Bar width={(stars[4] / total) * 100} barClick={props.barClick}revs={stars[4]} value={4}></Bar>
+        <Bar width={(stars[3] / total) * 100} barClick={props.barClick}revs={stars[3]} value={3}></Bar>
+        <Bar width={(stars[2] / total) * 100} barClick={props.barClick}revs={stars[2]} value={2}></Bar>
+        <Bar width={(stars[1] / total) * 100} barClick={props.barClick}revs={stars[1]} value={1}></Bar>
       </Graph>
     )
   }

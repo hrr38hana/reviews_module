@@ -3,8 +3,12 @@ import styled from 'styled-components';
 import Con from './Con.jsx'
 
 const Chart = styled.div`
+display:flex;
 flex-grow: 1;
+flex-direction: column;
+align-content: center;
 height:250px;
+min-width:33%;
 margin: 5px;
 border-style: solid;
 border-width: 1px;
@@ -25,7 +29,7 @@ margin-bottom: 15px;
 `
 
 const Cons = props => {
-  // console.log(props.reviews)
+  
   let consObj = {}
   if(props.reviews.length) {
     for (var i in props.reviews) {
@@ -34,7 +38,7 @@ const Cons = props => {
       }
       else consObj[props.reviews[i].cons]++;
     }
-    console.log(Object.entries(consObj))
+    
     return (
       <Chart>
         <Header>Cons</Header>

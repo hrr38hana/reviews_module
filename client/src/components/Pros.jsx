@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import Pro from './Pro.jsx'
 
 const Chart = styled.div`
+display:flex;
 flex-grow: 1;
+flex-direction: column;
+align-content: center;
 height:250px;
 min-width:33%;
 margin: 5px;
@@ -27,7 +30,7 @@ margin-bottom: 15px;
 
 
 const Pros = props => {
-  // console.log(props.reviews)
+  
   let prosObj = {}
   if (props.reviews.length) {
     for (var i in props.reviews) {
@@ -36,7 +39,7 @@ const Pros = props => {
       }
       else prosObj[props.reviews[i].pros]++;
     }
-    console.log(Object.entries(prosObj))
+    
     return (
       <Chart>
         <Header>Pros</Header>

@@ -27,6 +27,8 @@ module.exports = (db) => {
         cons VARCHAR(48) NOT NULL,
         describe_yourself VARCHAR(48) NULL,
         best_uses VARCHAR(48) NULL,
+        nickname VARCHAR(48) NOT NULL,
+        created INT(3) NOT NULL,
         product_ID INTEGER NOT NULL,
         PRIMARY KEY(id)
         );`);
@@ -41,6 +43,8 @@ module.exports = (db) => {
         db.queryAsync(`INSERT IGNORE INTO products (name) VALUES ('Product Number ${i}')`);
       }
     }).then(() => {
+      const dummyNames = ['Liam', 'Emma', 'Noah', 'Olivia', 'William', 'Ava', 'James', 'Isabella', 'Oliver', 'Sophia', 'Benjamin', 'Charlotte', 'Elijah', 'Mia', 'Lucas', 'Amelia', 'Mason', 'Harper', 'Logan', 'Evelyn', 'Alexander', 'Abigail', 'Ethan', 'Emily', 'Jacob', 'Elizabeth', 'Michael', 'Mila', 'Daniel', 'Ella', 'Henry', 'Avery', 'Jackson', 'Sofia', 'Sebastian', 'Camila', 'Aiden', 'Aria', 'Matthew', 'Scarlett', 'Samuel', 'Victoria', 'David', 'Madison', 'Joseph', "Luna", "Carter", "Grace", "Owen", "Chloe", "Wyatt", "Penelope", "John", "Layla", "Jack", "Riley", "Luke", "Zoey", "Jayden", "Nora", "Dylan", "Lily", "Grayson", "Elanor", "Levi", "Hannah", "Issac", "Lillian", "Gabriel", "Addison", "Julian", "Aubrey", "Mateo", "Ellie", "Anthony", "Stella", "Jaxon", "Natalie", "Lincoln", "Zoe", "Joshua", "Leah", "Christopher", "Hazel", "Andrew", "Violet", "Theodore", "Aurora", "Caleb", "Savannah", "Ryan", "Audrey", "Asher", "Brooklyn", "Nathan", "Bella", "Thomas", "Claire", "Leo", "Skylas", "Isaiah", "Lucy", "Charles", "Paisley", "Josiah", "Everly", "Hudson", "Annah", "Christian", "Caroline", "Hunter", "Nova", "Connor", "Genesis", "Eli", "Emilia", "Ezra", "Kennedy", "Aaron", "Samantha", "Landon", "Maya", "Adrian", "Willow", "Jonathan", "Kinsley", "Nolan", "Naomi", "Jeremiah", "Aaliyah", "Easton", "Elena" ];
+
       const dummyText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
       const randomNumber =(min, max) => {
@@ -63,9 +67,9 @@ module.exports = (db) => {
         for (var j = 0; j < revNum; j++) {
           //add a review for product i
           let stars = randomNumber(1, 5);
-          let body = dummyText;
+          let body = dummyText.slice(0, randomNumber(10,dummyText.length));
           let title = 'Lorem ipsum dolor';
-          let recommended = randomNumber(0,1);
+          let recommended = stars > 2 ? 1 : 0;
           let location = "Somewhere, USA";
           let gift = randomNumber(0,1);
           let email = 'apersonsemail@gmail.com';
@@ -73,9 +77,11 @@ module.exports = (db) => {
           let cons = optData();
           let describe_yourself = optData();
           let best_uses = optData();
+          let nickname = dummyNames[(randomNumber(0, dummyNames.length-1))];
+          let created = randomNumber(1, 30);
           db.queryAsync(`
-          INSERT IGNORE INTO reviews (stars, body, title, recommended, location, gift, email, pros, cons, describe_yourself, best_uses, product_ID)
-          VALUES ('${stars}', '${body}', '${title}', '${recommended}', '${location}', '${gift}', '${email}', '${pros}', '${cons}', '${describe_yourself}', '${best_uses}', '${i}');
+          INSERT IGNORE INTO reviews (stars, body, title, recommended, location, gift, email, pros, cons, describe_yourself, best_uses, nickname, created, product_ID)
+          VALUES ('${stars}', '${body}', '${title}', '${recommended}', '${location}', '${gift}', '${email}', '${pros}', '${cons}', '${describe_yourself}', '${best_uses}', '${nickname}', '${created}', '${i}');
           `)
         }
       }

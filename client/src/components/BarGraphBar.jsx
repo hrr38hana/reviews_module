@@ -51,12 +51,12 @@ padding: 0 15px;
 const Bar = props => {
   return (
     <div>
-      <BarWrapper>
+      <BarWrapper onClick={(e) => props.barClick(props.value)}>
         <StarIndicator>
           {props.value} Stars
       </StarIndicator>
         <ContainerBar>
-          <RenderedBar width={props.width} />
+          <RenderedBar  width={props.width} />
         </ContainerBar>
         <RevsTotal>{props.revs}</RevsTotal>
       </BarWrapper>
