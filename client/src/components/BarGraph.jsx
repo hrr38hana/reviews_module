@@ -24,12 +24,7 @@ font-side: 16px;
 align-items: center;
 margin-bottom: 15px;
 `
-// const Modal = styled.div`
-// z-index:4;
-// width:300px;
-// height:25px;
-// border-style:solid;
-// `;
+
 
 const BarGraph = props => {
   let stars = {

@@ -48,20 +48,28 @@ font-size: 16px;
 padding: 0 15px;
 `
 
-const Bar = props => {
-  return (
-    <div>
-      <BarWrapper onClick={(e) => props.barClick(props.value)}>
-        <StarIndicator>
-          {props.value} Stars
+class Bar extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+
+    }
+  }
+  render() {
+    return (
+      <div>
+        <BarWrapper onClick={(e) => this.props.barClick(this.props.value)}>
+          <StarIndicator>
+            {this.props.value} Stars
       </StarIndicator>
-        <ContainerBar>
-          <RenderedBar  width={props.width} />
-        </ContainerBar>
-        <RevsTotal>{props.revs}</RevsTotal>
-      </BarWrapper>
-    </div>
-  )
+          <ContainerBar>
+            <RenderedBar width={this.props.width} />
+          </ContainerBar>
+          <RevsTotal>{this.props.revs}</RevsTotal>
+        </BarWrapper>
+      </div>
+    )
+  }
 }
 
 export default Bar;

@@ -35,6 +35,14 @@ class ReviewsDetails extends React.Component {
       this.filterReviews();
     }
   }
+  componentWillReceiveProps(props) {
+    this.setState({
+      reviews: props.reviews.sort((a, b) => a.created - b.created),
+      isFiltered: props.isFiltered,
+      filteredReviews: props.reviews.sort((a, b) => a.created - b.created),
+      filteredBy: this.props.filteredBy
+    })
+  }
   filterReviews() {
     if (this.props.filteredBy === null) {
       this.setState({ filteredReviews: this.props.reviews, filteredBy: this.props.filteredBy })

@@ -64,9 +64,12 @@ class App extends React.Component {
       }
     }
     $.post(`/reviews/${data.product_Id}`, data)
-      .done((results) => {
-        this.setState({ reviews: results, product: data.product_Id, isHidden: true })
-        alert('Review Posted');
+      .done(async () => {
+        await $.get(`/reviews/${this.state.product}`)
+          .done(results => {
+            this.setState({ reviews: results, isHidden: true });
+            this.getAverage()
+          })
       })
       .catch((err) => {
         alert('Review NOT Posted! : ', err);
@@ -89,12 +92,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        {!this.state.isHidden ? <ReviewWrapper ref="ReviewForm">
+          <ReviewForm product_Id={this.state.product} toggle={this.toggleReviewWindow} post={this.addReview} />
+        </ReviewWrapper> : null}
         {this.state && this.state.reviews.length !== 0 ? <BigWrapper>
           <p style={{ fontSize: 30, fontWeight: 800, fontFamily: 'Helvetica' }}>Reviews</p>
           <ReviewsCharts filteredBy={this.state.filteredStar} isFiltered={this.state.isFiltered} barClick={this.filterReviews} reviews={this.state.reviews} rating={this.state.rating} toggle={this.toggleReviewWindow} />
-          {!this.state.isHidden ? <ReviewWrapper ref="ReviewForm">
-            <ReviewForm product_Id={this.state.product} post={this.addReview} />
-          </ReviewWrapper> : null}
         </BigWrapper> : null}
       </div>
     )
