@@ -5,8 +5,8 @@ import styled from "styled-components";
 import ReviewsCharts from "./components/ReviewsCharts.jsx";
 import ReviewForm from "./components/AddReviewForm.jsx";
 
-const backgroundImage = 'https://loading.io/spinners/rolling/lg.curve-bars-loading-indicator.gif';
-
+const backgroundImage =
+  "https://loading.io/spinners/rolling/lg.curve-bars-loading-indicator.gif";
 
 const BigWrapper = styled.div`
   position: relative;
@@ -121,10 +121,12 @@ class App extends React.Component {
               toggle={this.toggleReviewWindow}
             />
           </BigWrapper>
-        ) : <div style={{backgroundImage: `url(${backgroundImage})`}}></div>}
+        ) : (
+          <div style={{ backgroundImage: `url(${backgroundImage})` }} />
+        )}
       </div>
     );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById("reviews"));

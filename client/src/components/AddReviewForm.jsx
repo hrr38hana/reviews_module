@@ -19,7 +19,6 @@ const Location = styled.input`
 `;
 const Email = styled.input`
   width: 99%;
-
   height: 30px;
 `;
 const Pros = styled.input`
@@ -94,7 +93,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding: 60px;
   margin-bottom: 40px;
-  box-shadow: 0 0 20px 2px rgb(0,0,0, .7);
+  box-shadow: 0 0 20px 2px rgb(0, 0, 0, 0.7);
   animation: 0.5s ${zoom};
 `;
 const Container = styled.div`
@@ -106,7 +105,7 @@ const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 1040;
   display: block;
-  animation: 0.5s ${fader};
+  animation: .8s ${fader};
 `;
 
 class ReviewForm extends React.Component {
