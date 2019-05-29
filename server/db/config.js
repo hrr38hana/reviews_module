@@ -238,6 +238,31 @@ module.exports = db => {
         "Cheyenne, WY"
       ];
 
+      const positiveRevs = [
+        "WOW!",
+        "Love it!",
+        "No Complaints",
+        "Love at first sight",
+        "<3",
+        "Bought one for my wife too",
+        "Game Changer",
+        "Very Happy with this purchase",
+        "Super Fun"
+      ];
+
+      const negativeRevs = [
+        "Waste of money",
+        "its okay but...",
+        "could definitely be improved",
+        "let down",
+        "avoid this product",
+        "Immediately returned!",
+        "Thumbs Down!",
+        "Not the best, not the worst",
+        "Go with Cannondale instead",
+        "Hard Pass!"
+      ];
+
       const dummyText =
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
@@ -265,7 +290,7 @@ module.exports = db => {
           //add a review for product i
           let stars = randomNumber(1, 5);
           let body = dummyText.slice(0, randomNumber(10, dummyText.length));
-          let title = "Lorem ipsum dolor";
+          let title = stars > 2 ? positiveRevs[j] : negativeRevs[j];
           let recommended = stars > 2 ? 1 : 0;
           let location = cities[randomNumber(0, 49)];
           let gift = randomNumber(0, 1);
