@@ -5,6 +5,9 @@ import styled from "styled-components";
 import ReviewsCharts from "./components/ReviewsCharts.jsx";
 import ReviewForm from "./components/AddReviewForm.jsx";
 
+const backgroundImage = 'https://loading.io/spinners/rolling/lg.curve-bars-loading-indicator.gif';
+
+
 const BigWrapper = styled.div`
   position: relative;
   max-width: 1050px;
@@ -118,7 +121,7 @@ class App extends React.Component {
               toggle={this.toggleReviewWindow}
             />
           </BigWrapper>
-        ) : null}
+        ) : <div style={{backgroundImage: `url(${backgroundImage})`}}></div>}
       </div>
     );
   }

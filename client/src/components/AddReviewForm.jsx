@@ -1,41 +1,41 @@
 import React from "react";
-import styled from "styled-components";
-import Rating from "./RatingInput.jsx";
+import styled, { keyframes } from "styled-components";
+import { slideInRight, zoomIn, fadeIn } from "react-animations";
+
+const fader = keyframes`${fadeIn}`;
+const zoom = keyframes`${slideInRight}`;
 
 const TitleInput = styled.input`
-  width: 80%;
+  width: 99%;
   height: 30px;
 `;
 const Body = styled.input`
-  width: 80%;
+  width: 99%;
   height: 150px;
 `;
-const WouldRecommend = styled.input``;
-const WouldNotRecommend = styled.input``;
 const Location = styled.input`
-  width: 80%;
+  width: 99%;
   height: 30px;
 `;
-const Gift = styled.input``;
-const NoGift = styled.input``;
 const Email = styled.input`
-  width: 80%;
+  width: 99%;
+
   height: 30px;
 `;
 const Pros = styled.input`
-  width: 80%;
+  width: 99%;
   height: 30px;
 `;
 const Cons = styled.input`
-  width: 80%;
+  width: 99%;
   height: 30px;
 `;
 const DescribeYourself = styled.input`
-  width: 80%;
+  width: 99%;
   height: 30px;
 `;
 const BestUses = styled.input`
-  width: 80%;
+  width: 99%;
   height: 30px;
 `;
 const SubmitButton = styled.button`
@@ -74,7 +74,7 @@ const ReviewLabel = styled.p`
   font-weight: 700;
 `;
 const Nickname = styled.input`
-  width: 80%;
+  width: 99%;
   height: 30px;
 `;
 
@@ -94,6 +94,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding: 60px;
   margin-bottom: 40px;
+  box-shadow: 0 0 20px 2px rgb(0,0,0, .7);
+  animation: 0.5s ${zoom};
 `;
 const Container = styled.div`
   position: fixed;
@@ -104,6 +106,7 @@ const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 1040;
   display: block;
+  animation: 0.5s ${fader};
 `;
 
 class ReviewForm extends React.Component {
@@ -137,7 +140,7 @@ class ReviewForm extends React.Component {
   render() {
     return (
       <div>
-        <Container />
+        <Container onClick={() => this.props.toggle()} />
         <Wrapper>
           <h1 style={{ fontFamily: "Helvetica", fontWeight: 800 }}>
             Write a review
