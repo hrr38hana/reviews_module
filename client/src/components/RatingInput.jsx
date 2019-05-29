@@ -1,23 +1,21 @@
-import React from 'react';
-import Star from './Star.jsx'
-import styled from 'styled-components'
+import React from "react";
+import Star from "./Star.jsx";
+import styled from "styled-components";
 
 const StarWrapper = styled.div`
-display:flex;
-margin:5px;
-`
+  display: flex;
+  margin: 5px;
+`;
 
 class Rating extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      stars: [1, 1, 1, 0, 0],
-    }
-    this.addStars = this.addStars.bind(this)
+      stars: [1, 1, 1, 0, 0]
+    };
+    this.addStars = this.addStars.bind(this);
   }
-  componentDidMount() {
-    
-  }
+  componentDidMount() {}
   addStars(star) {
     event.preventDefault();
     let starSet = [];
@@ -29,17 +27,19 @@ class Rating extends React.Component {
         starSet[i] = 0;
       }
     }
-    this.setState({ stars: starSet })
-    console.log(this.state)
+    this.setState({ stars: starSet });
+    console.log(this.state);
   }
   render() {
-    return (<div>
-      <StarWrapper>
-      {this.state.stars.map((el, index) => {
-        return (<Star value={el} index={index} click={this.addStars}/>)
-      })}
-      </StarWrapper>
-    </div>)
+    return (
+      <div>
+        <StarWrapper>
+          {this.state.stars.map((el, index) => {
+            return <Star value={el} index={index} click={this.addStars} />;
+          })}
+        </StarWrapper>
+      </div>
+    );
   }
 }
 

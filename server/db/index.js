@@ -1,11 +1,11 @@
-const mysql = require('mysql');
-const createTables = require('./config');
-const Promise = require('bluebird');
-const database = 'TREK';
+const mysql = require("mysql");
+const createTables = require("./config");
+const Promise = require("bluebird");
+const database = "TREK";
 
 const connection = mysql.createConnection({
-  user: 'root',
-  password: '',
+  user: "root",
+  password: ""
 });
 
 const db = Promise.promisifyAll(connection, { multiArgs: true });
@@ -16,6 +16,5 @@ db.connectAsync()
   .then(() => db.queryAsync(`CREATE DATABASE IF NOT EXISTS ${database}`))
   .then(() => db.queryAsync(`USE ${database}`))
   .then(() => createTables(db));
-  
 
 module.exports = db;
